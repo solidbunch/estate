@@ -46,4 +46,4 @@ if [ -f "$WSL_HOSTS_PATH" ]; then
   add_hosts "$WSL_HOSTS_PATH"
 fi
 
-echo -e "${LIGHTGREEN}[Success]${WHITE} hosts file updated ${NOCOLOR}" >&3
+echo -e "[Estate]${LIGHTGREEN}[Success]${WHITE} hosts file updated ${NOCOLOR}" >&3
