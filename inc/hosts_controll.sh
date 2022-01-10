@@ -1,25 +1,22 @@
 # Edit hosts file records. Add new one and remove unused
 
-# WSL or Linux
+
 # /etc/hosts - default
-#if [ -f "$WSL_HOSTS_PATH" ]; then
-    #HOSTS_PATH=$WSL_HOSTS_PATH
- #   a=1
-#fi
+
 
 #echo "$ESTATE_DIR"
 
-clear_all_hosts() {
+clear_hosts() {
 
-  local HOSTS_PATH=$1
+  local LOCAL_HOSTS_PATH=$1
 
-  sed '/^# Start Estate Docker Hosts/,/^# End Estate Docker Hosts/{//!d;};' "$HOSTS_PATH" > hosts.tmp
-  sed '/^# Start Estate Docker Hosts/d;/^# End Estate Docker Hosts/d' hosts.tmp > "$HOSTS_PATH"
+  sed '/^# Start Estate Docker Hosts/,/^# End Estate Docker Hosts/{//!d;};' "$LOCAL_HOSTS_PATH" > hosts.tmp
+  sed '/^# Start Estate Docker Hosts/d;/^# End Estate Docker Hosts/d' hosts.tmp > "$LOCAL_HOSTS_PATH"
 }
 
-add_all_hosts() {
+add_hosts() {
 
-  local HOSTS_PATH=$1
+  local LOCAL_HOSTS_PATH=$1
 
   echo '# Start Estate Docker Hosts' >estate_hosts.tmp
 
@@ -33,18 +30,22 @@ add_all_hosts() {
 
   echo '# End Estate Docker Hosts' >>estate_hosts.tmp
 
-  cat estate_hosts.tmp "$HOSTS_PATH" >hosts.tmp
+  cat estate_hosts.tmp "$LOCAL_HOSTS_PATH" >hosts.tmp
 
   rm estate_hosts.tmp
 
-  mv hosts.tmp "$HOSTS_PATH"
+  mv hosts.tmp "$LOCAL_HOSTS_PATH"
 
 }
 
-clear_all_hosts "$HOSTS_PATH"
-clear_all_hosts "$WSL_HOSTS_PATH"
+clear_hosts "$HOSTS_PATH"
 
-add_all_hosts "$HOSTS_PATH"
-add_all_hosts "$WSL_HOSTS_PATH"
+add_hosts "$HOSTS_PATH"
+
+# If WSL running - need to update windows hosts too
+if [ -f "$WSL_HOSTS_PATH" ]; then
+  clear_hosts "$WSL_HOSTS_PATH"
+  add_hosts "$WSL_HOSTS_PATH"
+fi
 
 echo -e "${LIGHTGREEN}[Success]${WHITE} hosts file updated ${NOCOLOR}" >&3
