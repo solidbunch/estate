@@ -8,6 +8,8 @@ set -e
 ESTATE_DIR=/srv/estate
 APPS_DIR=/srv/apps
 INC_DIR=inc
+HOSTS_PATH=/etc/hosts
+WSL_HOSTS_PATH=/mnt/c/windows/system32/drivers/etc/hosts
 #QUIET_LOGS=1
 
 # Check $ESTATE_DIR folder exist
