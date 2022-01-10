@@ -1,10 +1,8 @@
+#
 # Edit hosts file records. Add new one and remove unused
-
-
-# /etc/hosts - default
-
-
-#echo "$ESTATE_DIR"
+# Need Administrator and root permissions.
+# Run with Administrator permissions on Windows and with sudo
+#
 
 clear_hosts() {
 

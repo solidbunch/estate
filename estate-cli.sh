@@ -1,5 +1,8 @@
 #!/bin/bash
 
+#
+# Program main file
+#
 
 # Stop when error
 set -e
@@ -27,6 +30,7 @@ source $INC_DIR/log_level.sh
 # Check system requirements
 source $INC_DIR/system_check.sh
 
+# Operate with hosts file. Need Administrator and root permissions
 source $INC_DIR/hosts_controll.sh
 
 #echo "[Success] Project created"
