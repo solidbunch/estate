@@ -19,6 +19,11 @@ while [[ $# -gt 0 ]]; do
       shift # past argument
       shift # past value PROJECT_NAME
       ;;
+    hosts)
+      source $INC_DIR/hosts_update.sh
+      exit
+      shift # past argument
+      ;;
     -s|--searchpath)
       SEARCHPATH="$2"
       shift # past argument

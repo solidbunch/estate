@@ -38,6 +38,6 @@ source $INC_DIR/parse_arguments.sh
 source $INC_DIR/add_project.sh
 
 # Operate with hosts file. Need Administrator and root permissions
-source $INC_DIR/hosts_controll.sh
+source $INC_DIR/hosts_update.sh
 
 #echo "[Success] Project created"
