@@ -3,7 +3,7 @@
 #
 
 # Defaults
-PROJECT_TYPE="skf"
+PROJECT_TYPE="foundation"
 
 while [[ $# -gt 0 ]]; do
   case $1 in
@@ -20,7 +20,7 @@ while [[ $# -gt 0 ]]; do
       shift # past value PROJECT_NAME
       ;;
     hosts)
-      source $INC_DIR/hosts_update.sh
+      source "$INC_DIR"/hosts_update.sh
       exit
       shift # past argument
       ;;
