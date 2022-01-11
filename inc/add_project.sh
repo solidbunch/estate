@@ -39,5 +39,5 @@ if [ "$PROJECT_TYPE" == "skf" ]; then
 
 fi
 
-echo -e "[Estate] Type ${YELLOW}cd "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN"${NOCOLOR}" >&3
-echo -e "[Estate] Go to ${YELLOW}http://"$PROJECT_NAME.$LOCAL_DOMAIN"${NOCOLOR} in your browser " >&3
+echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Type '${YELLOW}cd "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN"${NOCOLOR}'" >&3
+echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Go to '${YELLOW}http://"$PROJECT_NAME.$LOCAL_DOMAIN"${NOCOLOR}' in your browser " >&3
