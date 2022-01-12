@@ -40,4 +40,4 @@ source $INC_DIR/add_project.sh
 # Operate with hosts file. Need Administrator and root permissions
 source $INC_DIR/hosts_update.sh
 
-#echo "[Success] Project created"
+echo -e "[Estate]${LIGHTGREEN}[Success]${WHITE} New project $PROJECT_NAME ready! ${NOCOLOR}" >&3
