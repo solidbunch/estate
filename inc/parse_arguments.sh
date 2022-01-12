@@ -24,6 +24,20 @@ while [[ $# -gt 0 ]]; do
       exit
       shift # past argument
       ;;
+    stop)
+      # Stop all running containers
+      source "$INC_DIR"/docker_containers.sh
+      containers_stop
+      exit
+      shift # past argument
+      ;;
+    down)
+      # Stop and remove all running containers
+      source "$INC_DIR"/docker_containers.sh
+      containers_down
+      exit
+      shift # past argument
+      ;;
     -s|--searchpath)
       SEARCHPATH="$2"
       shift # past argument

@@ -16,12 +16,8 @@ if [ -n "$(ls -A "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN")" ]; then
 fi
 
 # Stop and remove all running containers
-CONTAINERS=$(docker ps -a -q)
-if [ -n "$CONTAINERS" ]; then
-  echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Stopping and removing all running containers ..." >&3
-  docker stop $CONTAINERS
-  docker rm $CONTAINERS
-fi
+source "$INC_DIR"/docker_containers.sh
+containers_down
 
 if [ -f "$INC_DIR"/project_types/"$PROJECT_TYPE".sh ]; then
 
