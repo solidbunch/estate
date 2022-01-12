@@ -3,9 +3,9 @@ containers_stop() {
   local CONTAINERS=$(docker ps -a -q)
   if [ -n "$CONTAINERS" ]; then
     echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Stopping all running containers ..." >&3
-    docker stop "$CONTAINERS"
+    docker stop $(docker ps -a -q)
   else
-    echo -e "[Estate]${CYAN}[Info]${NOCOLOR} No containers running" >&3
+    echo -e "[Estate]${CYAN}[Info]${NOCOLOR} No containers are running" >&3
   fi
 }
 
@@ -14,10 +14,10 @@ containers_down() {
   local CONTAINERS=$(docker ps -a -q)
   if [ -n "$CONTAINERS" ]; then
     echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Stopping all running containers ..." >&3
-    docker stop "$CONTAINERS"
-    echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Removing all running containers ..." >&3
-    docker rm "$CONTAINERS"
+    docker stop $(docker ps -a -q)
+    echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Removing all stopped containers ..." >&3
+    docker rm $(docker ps -a -q)
   else
-    echo -e "[Estate]${CYAN}[Info]${NOCOLOR} No containers running" >&3
+    echo -e "[Estate]${CYAN}[Info]${NOCOLOR} No containers are running" >&3
   fi
 }
