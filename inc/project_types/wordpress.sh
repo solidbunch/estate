@@ -2,13 +2,13 @@
 # Project type PHP with Database and Nginx
 #
 
-echo -e "[Estate]${CYAN}[Info]${WHITE} Installing WordPress with Database and Apache ... ${NOCOLOR}" >&3
+type_wordpress() {
+  echo -e "[Estate]${CYAN}[Info]${WHITE} Installing WordPress with Database and Apache ... ${NOCOLOR}" >&3
 
+  cd "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN" || exit
 
-cd "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN" || exit
-
-# Add docker-compose.yml file
-cat <<EOT >> docker-compose.yml
+  # Add docker-compose.yml file
+  cat <<EOT >>docker-compose.yml
 version: "3.9"
 
 
@@ -37,8 +37,8 @@ services:
 
 EOT
 
-# Add .env file
-cat <<EOT >> .env
+  # Add .env file
+  cat <<EOT >>.env
 
 # DataBase options
 # Add credentials for database, use a password generator
@@ -76,14 +76,13 @@ APP_PORT=80
 
 EOT
 
-mkdir -p "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN/public"
+  mkdir -p "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN/public"
 
+  docker-compose up -d --build
 
-docker-compose up -d --build
+  cd "$ESTATE_DIR" || exit
 
+  echo -e "[Estate]${LIGHTGREEN}[Success]${WHITE} Project files added to $APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN ${NOCOLOR}" >&3
+  echo -e "[Estate]${LIGHTGREEN}[Success]${WHITE} database, php launched in $APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN ${NOCOLOR}" >&3
 
-
-cd "$ESTATE_DIR" || exit
-
-echo -e "[Estate]${LIGHTGREEN}[Success]${WHITE} Project files added to $APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN ${NOCOLOR}" >&3
-echo -e "[Estate]${LIGHTGREEN}[Success]${WHITE} database, php launched in $APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN ${NOCOLOR}" >&3
+}

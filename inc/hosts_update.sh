@@ -75,4 +75,4 @@ hosts_update() {
 
 }
 
-hosts_update
+
