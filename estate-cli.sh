@@ -31,13 +31,31 @@ source $INC_DIR/log_level.sh
 # Check system requirements
 source $INC_DIR/system_check.sh
 
-# Parsing arguments
-source $INC_DIR/parse_arguments.sh
+source "$INC_DIR"/docker_containers.sh
 
+source $INC_DIR/parse_arguments.sh
 
 source $INC_DIR/add_project.sh
 
+# Load project types
+source "$INC_DIR"/project_types/foundation.sh
+source "$INC_DIR"/project_types/wordpress.sh
+source "$INC_DIR"/project_types/php.sh
+
 # Operate with hosts file. Need Administrator and root permissions
 source $INC_DIR/hosts_update.sh
+
+
+# Run program
+
+# Parse arguments
+parse_arguments "$@"
+
+# Add new project
+add_project
+
+# Update hosts file
+hosts_update
+
 
 echo -e "[Estate]${LIGHTGREEN}[Success]${WHITE} New project $PROJECT_NAME ready! ${NOCOLOR}" >&3
