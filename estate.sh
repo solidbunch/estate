@@ -180,7 +180,7 @@ add_project() {
 
   case "$PROJECT_TYPE" in
   foundation)
-    type_foundation
+    #type_foundation
     ;;
   wordpress)
     type_wordpress
@@ -314,7 +314,7 @@ EOT
 
   mkdir -p "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN/public"
 
-  docker-compose up -d --build
+  #docker-compose up -d --build
 
   cd "$ESTATE_DIR" || exit
 
@@ -390,7 +390,7 @@ phpinfo();
 
 EOT
 
-  docker-compose up -d --build
+  #docker-compose up -d --build
 
   cd "$ESTATE_DIR" || exit
 
