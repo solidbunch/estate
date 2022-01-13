@@ -159,14 +159,12 @@ add_project() {
   if [ -n "$(ls -A "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN")" ]; then
     echo -e "[Estate]${LIGHTRED}[Error]${WHITE} "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN" is not empty ${NOCOLOR}"
     echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Delete all files inside "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN"?"
-    read -p "[Estate] Are you sure? y/n - " -n 1 -r
-    echo # (optional) move to a new line
+    read -p "[Estate] Are you sure? (y/n) - " -n 10 -r
     if [[ $REPLY =~ ^[Yy]$ ]]; then
 
       # Clear project directory (need sudo for remove www-data and database files)
-      read -p "[Estate] For deleting www-data and database files need sudo rights. Are you agree? y/n - " -n 1 -r
-      echo # (optional) move to a new line
-      if [[ $REPLY =~ ^[Yy]$ ]]; then
+      read -p "[Estate] For deleting www-data and database files need sudo rights. Type sudo/no - " -n 10 -r
+      if [[ $REPLY = sudo ]]; then
         sudo rm -rfv "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN"
       else
         rm -rfv "$APPS_DIR/$PROJECT_NAME.$LOCAL_DOMAIN"
@@ -200,6 +198,7 @@ add_project() {
   echo -e "[Estate]${CYAN}[Info]${NOCOLOR} Go to '${YELLOW}http://"$PROJECT_NAME.$LOCAL_DOMAIN"${NOCOLOR}' in your browser " >&3
 
 }
+
 
 
 # Load project types
